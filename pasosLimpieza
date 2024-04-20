@@ -1,0 +1,16 @@
+1.- Eliminar eslintrc.cjs
+2.- voy a package.json y 
+    - elimino todo lo que tiene que ver con "eslint"
+    - Busco la key "lint" dentro del objeto "scripts" y defino como su contenido "standard"
+    - Busco la key "version" y la defino como "0.0.1"
+    - Defino como voy a configurar el slint agregando la key "eslintConfig:" y su valor será:
+      "eslintConfig":{
+        "extends":[
+          "./"
+        ]
+      }
+  3.- ejecuto en terminal: "npm i -D -E standard"
+
+  copio este path en reemplazo de "./" -> ./node_modules/standard/eslintrc.json"
+
+  5.- Limpio el index. corrigo el lenguaje y cambio el título
