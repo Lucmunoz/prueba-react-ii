@@ -20,7 +20,8 @@ const Pokemones = () => {
         <h2 className='pb-2'>Selecciona un pokemon</h2>
         <form className='d-flex flex-column align-items-center' onSubmit={handleSubmit}>
           <div className='mb-3 col-4'>
-            <select name='listado-pokemones' className='form-select' aria-label='Default select example' onChange={(e) => { setName(e.target.value) }}>
+            <select className='form-select' aria-label='Default select example' value={name} onChange={(e) => { setName(e.target.value) }}>
+              <option>Seleccione un pokemon</option>
               {pokemones.map((element, index) => {
                 return (
                   <option key={index}>{element}</option>
@@ -28,7 +29,7 @@ const Pokemones = () => {
               })}
             </select>
           </div>
-          <button type='submit' className='btn btn-primary'>Cargar Datos</button>
+          <button disabled={name === ''} type='submit' className='btn btn-primary'>Cargar Datos</button>
         </form>
       </div>
     )
