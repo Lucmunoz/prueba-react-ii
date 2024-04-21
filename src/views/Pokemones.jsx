@@ -1,14 +1,16 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MyContext } from '../context/MyContext'
 
 const Pokemones = () => {
   const { pokemones, pokemonsLoaded, setPokemonLoaded } = useContext(MyContext)
+  const [name, setName] = useState('')
+
   const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    navigate(`/pokemones/${event.target.elements['listado-pokemones'].value}`)
+    navigate(`/pokemones/${name}`)
     setPokemonLoaded(false)
   }
 
@@ -18,7 +20,7 @@ const Pokemones = () => {
         <h2 className='pb-2'>Selecciona un pokemon</h2>
         <form className='d-flex flex-column align-items-center' onSubmit={handleSubmit}>
           <div className='mb-3 col-4'>
-            <select name='listado-pokemones' className='form-select' aria-label='Default select example'>
+            <select name='listado-pokemones' className='form-select' aria-label='Default select example' onChange={(e) => { setName(e.target.value) }}>
               {pokemones.map((element, index) => {
                 return (
                   <option key={index}>{element}</option>
